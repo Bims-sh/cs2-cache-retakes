@@ -11,7 +11,7 @@
     "ShouldOpenDoors": false,
     "IsAutoPlantEnabled": true,
     "QueuePriorityFlag": "@css/vip",
-    "IsDebugMode": true,
+    "IsDebugMode": false,
     "ShouldForceEvenTeamsWhenPlayerCountIsMultipleOf10": true,
     "EnableFallbackBombsiteAnnouncement": true,
     "ShouldRemoveSpectators": false,
