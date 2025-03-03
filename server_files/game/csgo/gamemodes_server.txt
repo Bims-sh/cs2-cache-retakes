@@ -1,0 +1,36 @@
+"Gamemodes_Server.txt"
+{
+    "gameTypes"
+    {
+        "classic"
+        {
+            "gameModes"
+            {
+                "retakes"
+                {
+                    "maxplayers" "32"
+                    "exec"
+                    {
+                        "exec" "cache-retakes.cfg"
+                    }
+                    "mapgroupsMP"
+                    {
+                        "mg_retakes" ""
+                    }
+                }
+            }
+        }
+    }
+    "mapgroups"
+    {
+        "mg_retakes"
+        {
+            "name" "mg_retakes"
+            "displayname" "Retakes"
+            "maps"
+            {
+                "de_mirage" ""
+            }
+        }
+    }
+}

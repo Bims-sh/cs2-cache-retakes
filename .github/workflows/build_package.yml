@@ -1,0 +1,144 @@
+name: Build Cache Retake Server Package
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build_and_upload_package:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set MMS version variable
+        id: mms_version
+        run: |
+          mkdir -p package_files/game/csgo
+          echo "MMS_VERSION=1315" >> $GITHUB_ENV
+          echo "MMS_VERSION=${{ env.MMS_VERSION }}"
+
+      - name: Get latest release from roflmuffin/CounterStrikeSharp
+        run: |
+          FILE_NAME=$(curl -s https://api.github.com/repos/roflmuffin/CounterStrikeSharp/releases/latest | jq -r ".assets[] | select(.name | test(\"counterstrikesharp-with-runtime-build.*-linux.*\")) | .name")
+          echo "Downloading ${FILE_NAME}"
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/
+          curl -L -o "${FILE_NAME}" "https://github.com/roflmuffin/CounterStrikeSharp/releases/download/$(curl -s https://api.github.com/repos/roflmuffin/CounterStrikeSharp/releases/latest | jq -r .tag_name)/${FILE_NAME}"
+          unzip "${FILE_NAME}"
+          rm "${FILE_NAME}"
+
+      - name: Get latest release from LordFetznschaedl/CS2Rcon
+        run: |
+          FILE_NAME=$(curl -s https://api.github.com/repos/LordFetznschaedl/CS2Rcon/releases/latest | jq -r ".assets[] | select(.name | test(\"CS2Rcon-.*\")) | .name")
+          echo "Downloading ${FILE_NAME}"
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/
+          curl -L -o "${FILE_NAME}" "https://github.com/LordFetznschaedl/CS2Rcon/releases/download/$(curl -s https://api.github.com/repos/LordFetznschaedl/CS2Rcon/releases/latest | jq -r .tag_name)/${FILE_NAME}"
+          unzip "${FILE_NAME}"
+          rm "${FILE_NAME}"
+
+          VERSIONED_DIR=$(ls -d CS2Rcon-* | head -n 1)
+          cp -r "${VERSIONED_DIR}/addons" ./
+          rm -rf "${VERSIONED_DIR}"
+
+      - name: Get latest release from B3none/cs2-retakes
+        run: |
+          FILE_NAME=$(curl -s https://api.github.com/repos/B3none/cs2-retakes/releases/latest | jq -r ".assets[] | select(.name | test(\"cs2-retakes.*\")) | select(.name | test(\"-shared|-no-map-configs\") | not) | .name")
+          echo "Downloading ${FILE_NAME}"
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/addons/counterstrikesharp/plugins
+          curl -L -o "${FILE_NAME}" "https://github.com/B3none/cs2-retakes/releases/download/$(curl -s https://api.github.com/repos/B3none/cs2-retakes/releases/latest | jq -r .tag_name)/${FILE_NAME}"
+          unzip "${FILE_NAME}"
+          rm "${FILE_NAME}"
+
+      - name: Get latest release from B3none/cs2-retakes (shared)
+        run: |
+          FILE_NAME=$(curl -s https://api.github.com/repos/B3none/cs2-retakes/releases/latest | jq -r ".assets[] | select(.name | test(\"cs2-retakes-shared.*\")) | .name")
+          echo "Downloading ${FILE_NAME}"
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/
+          curl -L -o "${FILE_NAME}" "https://github.com/B3none/cs2-retakes/releases/download/$(curl -s https://api.github.com/repos/B3none/cs2-retakes/releases/latest | jq -r .tag_name)/${FILE_NAME}"
+          unzip "${FILE_NAME}"
+          rm "${FILE_NAME}"
+
+      - name: Get latest release from B3none/cs2-instadefuse
+        run: |
+          FILE_NAME=$(curl -s https://api.github.com/repos/B3none/cs2-instadefuse/releases/latest | jq -r ".assets[] | select(.name | test(\"cs2-instaplant.*\")) | .name")
+          echo "Downloading ${FILE_NAME}"
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/
+          curl -L -o "${FILE_NAME}" "https://github.com/B3none/cs2-instadefuse/releases/download/$(curl -s https://api.github.com/repos/B3none/cs2-instadefuse/releases/latest | jq -r .tag_name)/${FILE_NAME}"
+          unzip "${FILE_NAME}"
+          rm "${FILE_NAME}"
+      
+      - name: Get latest release from Source2ZE/ServerListPlayersFix
+        run: |
+          FILE_NAME=$(curl -s https://api.github.com/repos/Source2ZE/ServerListPlayersFix/releases/latest | jq -r ".assets[] | select(.name | test(\"Linux.*\")) | .name")
+          echo "Downloading ${FILE_NAME}"
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/
+          curl -L -o "${FILE_NAME}" "https://github.com/Source2ZE/ServerListPlayersFix/releases/download/$(curl -s https://api.github.com/repos/Source2ZE/ServerListPlayersFix/releases/latest | jq -r .tag_name)/${FILE_NAME}"
+          unzip "${FILE_NAME}"
+          rm "${FILE_NAME}"
+
+      - name: Get latest release from partiusfabaa/cs2-advertisement
+        run: |
+          FILE_NAME=$(curl -s https://api.github.com/repos/partiusfabaa/cs2-advertisement/releases/latest | jq -r ".assets[] | select(.name | test(\"Advertisement.*\")) | .name")
+          echo "Downloading ${FILE_NAME}"
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/
+          curl -L -o "${FILE_NAME}" "https://github.com/partiusfabaa/cs2-advertisement/releases/download/$(curl -s https://api.github.com/repos/partiusfabaa/cs2-advertisement/releases/latest | jq -r .tag_name)/${FILE_NAME}"
+          unzip "${FILE_NAME}"
+          rm "${FILE_NAME}"
+
+      - name: Get latest release from kus/CS2_ExecAfter
+        run: |
+          FILE_NAME=$(curl -s https://api.github.com/repos/kus/CS2_ExecAfter/releases/latest | jq -r ".assets[] | select(.name | test(\"CS2_ExecAfter.*\")) | .name")
+          echo "Downloading ${FILE_NAME}"
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/
+          curl -L -o "${FILE_NAME}" "https://github.com/kus/CS2_ExecAfter/releases/download/$(curl -s https://api.github.com/repos/kus/CS2_ExecAfter/releases/latest | jq -r .tag_name)/${FILE_NAME}"
+          unzip "${FILE_NAME}"
+          rm "${FILE_NAME}"
+
+      - name: Get and extract MMS source tar file
+        run: |
+          MMS_URL="https://mms.alliedmods.net/mmsdrop/2.0/mmsource-2.0.0-git${{ env.MMS_VERSION }}-linux.tar.gz"
+          echo "Downloading MMS source from ${MMS_URL}"
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/
+          curl -L -o "mmsource-2.0.0-git${{ env.MMS_VERSION }}-linux.tar.gz" "${MMS_URL}"
+          tar -xvzf "mmsource-2.0.0-git${{ env.MMS_VERSION }}-linux.tar.gz"
+
+      - name: Download latest acmrs.sh version
+        run: |
+          echo "Downloading acmrs.sh"
+          cd $GITHUB_WORKSPACE/package_files/game/
+          curl -L -O https://raw.githubusercontent.com/ghostcap-gaming/ACMRS-cs2-metamod-update-fix/refs/heads/main/acmrs.sh
+          sed -i 's#/home/container/game/csgo#/home/steam/cs2-dedicated/game/csgo#' acmrs.sh
+          chmod +x acmrs.sh
+
+      - name: Copy the server_files directory into the package_files directory
+        run: |
+          cp -r server_files/game package_files
+
+      - name: Tar the package_files directory
+        run: |
+          cd $GITHUB_WORKSPACE/package_files
+          tar cvzf package.tar.gz ./*
+
+      - name: Get tag
+        id: tag
+        run: |
+          latest_tag=$(curl --silent \
+            -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
+            "https://api.github.com/repos/${{ github.repository }}/tags" | jq -r '.[0].name')
+          if [ -z "$latest_tag" ]; then
+            latest_tag=1
+          else
+            latest_tag=$((latest_tag + 1))
+          fi
+          echo "Latest tag is: $latest_tag"
+          echo "TAG=$latest_tag" >> $GITHUB_ENV
+
+      - name: GH Release
+        uses: softprops/action-gh-release@v2.1.0
+        with:
+          files: "package_files/package.tar.gz"
+          token: ${{ secrets.TOKEN }}
+          tag_name: "${{ env.TAG }}"
