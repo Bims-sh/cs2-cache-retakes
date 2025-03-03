@@ -104,6 +104,7 @@ jobs:
           cd $GITHUB_WORKSPACE/package_files/game/csgo/
           curl -L -o "mmsource-2.0.0-git${{ env.MMS_VERSION }}-linux.tar.gz" "${MMS_URL}"
           tar -xvzf "mmsource-2.0.0-git${{ env.MMS_VERSION }}-linux.tar.gz"
+          rm mmsource-2.0.0-git${{ env.MMS_VERSION }}-linux.tar.gz
 
       - name: Download latest acmrs.sh version
         run: |
