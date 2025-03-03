@@ -3,7 +3,7 @@
     "HtmlCenterDuration": 5,
     "WelcomeMessage": {
         "MessageType": 2,
-        "Message": "<img src=\"https://raw.githubusercontent.com/Bims-sh/cs2-cache-retakes/refs/heads/master/assets/peace.png\">",
+        "Message": "<br /><img src=\"https://raw.githubusercontent.com/Bims-sh/cs2-cache-retakes/refs/heads/main/assets/peace.png\"><br />",
         "DisplayDelay": 8
     },
     "Ads": [],

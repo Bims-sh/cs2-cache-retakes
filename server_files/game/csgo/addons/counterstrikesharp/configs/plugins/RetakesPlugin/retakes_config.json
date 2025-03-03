@@ -5,7 +5,7 @@
     "RoundsToScramble": 5,
     "IsScrambleEnabled": true,
     "EnableFallbackAllocation": true,
-    "EnableBombsiteAnnouncementVoices": false,
+    "EnableBombsiteAnnouncementVoices": true,
     "EnableBombsiteAnnouncementCenter": true,
     "ShouldBreakBreakables": true,
     "ShouldOpenDoors": false,
@@ -14,7 +14,7 @@
     "IsDebugMode": false,
     "ShouldForceEvenTeamsWhenPlayerCountIsMultipleOf10": true,
     "EnableFallbackBombsiteAnnouncement": true,
-    "ShouldRemoveSpectators": false,
+    "ShouldRemoveSpectators": true,
     "IsBalanceEnabled": true,
     "ShouldPreventTeamChangesMidRound": true
 }

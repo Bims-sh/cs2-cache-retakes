@@ -43,9 +43,9 @@ jobs:
           cp -r "${VERSIONED_DIR}/addons" ./
           rm -rf "${VERSIONED_DIR}"
 
-      - name: Get latest release from B3none/cs2-retakes
+      - name: Get latest release from B3none/cs2-retakes (no-map-configs)
         run: |
-          FILE_NAME=$(curl -s https://api.github.com/repos/B3none/cs2-retakes/releases/latest | jq -r ".assets[] | select(.name | test(\"cs2-retakes.*\")) | select(.name | test(\"-shared|-no-map-configs\") | not) | .name")
+          FILE_NAME=$(curl -s https://api.github.com/repos/B3none/cs2-retakes/releases/latest | jq -r ".assets[] | select(.name | test(\"cs2-retakes.*no-map-configs\")) | .name")
           echo "Downloading ${FILE_NAME}"
           cd $GITHUB_WORKSPACE/package_files/game/csgo/addons/counterstrikesharp/plugins/
           curl -L -o "${FILE_NAME}" "https://github.com/B3none/cs2-retakes/releases/download/$(curl -s https://api.github.com/repos/B3none/cs2-retakes/releases/latest | jq -r .tag_name)/${FILE_NAME}"
