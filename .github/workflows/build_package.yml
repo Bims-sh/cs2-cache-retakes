@@ -3,7 +3,7 @@ name: Build Cache Retake Server Package
 on:
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
 
 jobs:
