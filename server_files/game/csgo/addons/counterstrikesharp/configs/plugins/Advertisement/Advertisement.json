@@ -11,7 +11,7 @@
             "Interval": 60,
             "Messages": [
                 {
-                    "Chat": "{DEFAULT}[{GREEN}Server{DEFAULT}] IP: {RED}{IP}{DEFAULT}:{GREEN}{PORT}{DEFAULT}"
+                    "Chat": "{DEFAULT}[{GREEN}Server{DEFAULT}] IP: {RED}{IP}{DEFAULT}:{GREEN}{PORT}{DEFAULT} ({BLUE}cs.bims.sh{DEFAULT})"
                 }
             ]
         },
