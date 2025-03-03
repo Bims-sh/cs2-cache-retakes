@@ -30,12 +30,12 @@ jobs:
           unzip "${FILE_NAME}"
           rm "${FILE_NAME}"
 
-      - name: Get latest release from daffyyyy/CS2-SimpleAdmin
+      - name: Get latest release from yonilerner/cs2-retakes-allocator
         run: |
-          FILE_NAME=$(curl -s https://api.github.com/repos/daffyyyy/CS2-SimpleAdmin/releases/latest | jq -r ".assets[] | select(.name | test(\"CS2-SimpleAdmin.*\")) | .name")
+          FILE_NAME=$(curl -s https://api.github.com/repos/yonilerner/cs2-retakes-allocator/releases/latest | jq -r ".assets[] | select(.name | test(\"cs2-retakes-allocator.*\")) | .name")
           echo "Downloading ${FILE_NAME}"
-          cd $GITHUB_WORKSPACE/package_files/game/csgo/
-          curl -L -o "${FILE_NAME}" "https://github.com/daffyyyy/CS2-SimpleAdmin/releases/download/$(curl -s https://api.github.com/repos/daffyyyy/CS2-SimpleAdmin/releases/latest | jq -r .tag_name)/${FILE_NAME}"
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/counterstrikesharp/plugins/
+          curl -L -o "${FILE_NAME}" "https://github.com/yonilerner/cs2-retakes-allocator/releases/download/$(curl -s https://api.github.com/repos/yonilerner/cs2-retakes-allocator/releases/latest | jq -r .tag_name)/${FILE_NAME}"
           unzip "${FILE_NAME}"
           rm "${FILE_NAME}"
 
