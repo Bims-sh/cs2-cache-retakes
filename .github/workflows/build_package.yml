@@ -30,6 +30,15 @@ jobs:
           unzip "${FILE_NAME}"
           rm "${FILE_NAME}"
 
+      - name: Get latest release from daffyyyy/CS2-SimpleAdmin
+        run: |
+          FILE_NAME=$(curl -s https://api.github.com/repos/daffyyyy/CS2-SimpleAdmin/releases/latest | jq -r ".assets[] | select(.name | test(\"CS2-SimpleAdmin.*\")) | .name")
+          echo "Downloading ${FILE_NAME}"
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/
+          curl -L -o "${FILE_NAME}" "https://github.com/daffyyyy/CS2-SimpleAdmin/releases/download/$(curl -s https://api.github.com/repos/daffyyyy/CS2-SimpleAdmin/releases/latest | jq -r .tag_name)/${FILE_NAME}"
+          unzip "${FILE_NAME}"
+          rm "${FILE_NAME}"
+
       - name: Get latest release from LordFetznschaedl/CS2Rcon
         run: |
           FILE_NAME=$(curl -s https://api.github.com/repos/LordFetznschaedl/CS2Rcon/releases/latest | jq -r ".assets[] | select(.name | test(\"CS2Rcon-.*\")) | .name")
