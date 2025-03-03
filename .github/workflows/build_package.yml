@@ -47,7 +47,7 @@ jobs:
         run: |
           FILE_NAME=$(curl -s https://api.github.com/repos/B3none/cs2-retakes/releases/latest | jq -r ".assets[] | select(.name | test(\"cs2-retakes.*\")) | select(.name | test(\"-shared|-no-map-configs\") | not) | .name")
           echo "Downloading ${FILE_NAME}"
-          cd $GITHUB_WORKSPACE/package_files/game/csgo/addons/counterstrikesharp/plugins
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/addons/counterstrikesharp/plugins/
           curl -L -o "${FILE_NAME}" "https://github.com/B3none/cs2-retakes/releases/download/$(curl -s https://api.github.com/repos/B3none/cs2-retakes/releases/latest | jq -r .tag_name)/${FILE_NAME}"
           unzip "${FILE_NAME}"
           rm "${FILE_NAME}"
@@ -63,9 +63,9 @@ jobs:
 
       - name: Get latest release from B3none/cs2-instadefuse
         run: |
-          FILE_NAME=$(curl -s https://api.github.com/repos/B3none/cs2-instadefuse/releases/latest | jq -r ".assets[] | select(.name | test(\"cs2-instaplant.*\")) | .name")
+          FILE_NAME=$(curl -s https://api.github.com/repos/B3none/cs2-instadefuse/releases/latest | jq -r ".assets[] | select(.name | test(\"cs2-instadefuse.*\")) | .name")
           echo "Downloading ${FILE_NAME}"
-          cd $GITHUB_WORKSPACE/package_files/game/csgo/
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/addons/counterstrikesharp/plugins/
           curl -L -o "${FILE_NAME}" "https://github.com/B3none/cs2-instadefuse/releases/download/$(curl -s https://api.github.com/repos/B3none/cs2-instadefuse/releases/latest | jq -r .tag_name)/${FILE_NAME}"
           unzip "${FILE_NAME}"
           rm "${FILE_NAME}"
