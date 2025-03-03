@@ -11,7 +11,7 @@
             "Interval": 60,
             "Messages": [
                 {
-                    "Chat": "{DEFAULT}[{GREEN}Server{DEFAULT}] {RED}{IP}{DEFAULT}:{GREEN}{PORT}{DEFAULT}"
+                    "Chat": "{DEFAULT}[{GREEN}Server{DEFAULT}] IP: {RED}{IP}{DEFAULT}:{GREEN}{PORT}{DEFAULT}"
                 }
             ]
         },
@@ -19,7 +19,7 @@
             "Interval": 100,
             "Messages": [
                 {
-                    "Chat": "{BLUE}{PLAYERS}{DEFAULT}/{BLUE}{MAXPLAYERS}{DEFAULT} Players"
+                    "Chat": "{DEFAULT}[{GREEN}Server{DEFAULT}] Current Players: {BLUE}{PLAYERS}{DEFAULT}/{BLUE}{MAXPLAYERS}{DEFAULT}"
                 }
             ]
         }
