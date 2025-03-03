@@ -17,7 +17,7 @@ jobs:
       - name: Set MMS version variable
         id: mms_version
         run: |
-          mkdir -p package_files/game/csgo
+          mkdir -p package_files/game/csgo/
           echo "MMS_VERSION=1315" >> $GITHUB_ENV
           echo "MMS_VERSION=${{ env.MMS_VERSION }}"
 
@@ -34,7 +34,7 @@ jobs:
         run: |
           FILE_NAME=$(curl -s https://api.github.com/repos/yonilerner/cs2-retakes-allocator/releases/latest | jq -r ".assets[] | select(.name | test(\"cs2-retakes-allocator.*\")) | .name")
           echo "Downloading ${FILE_NAME}"
-          cd $GITHUB_WORKSPACE/package_files/game/csgo/counterstrikesharp/plugins/
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/addons/counterstrikesharp/plugins/
           curl -L -o "${FILE_NAME}" "https://github.com/yonilerner/cs2-retakes-allocator/releases/download/$(curl -s https://api.github.com/repos/yonilerner/cs2-retakes-allocator/releases/latest | jq -r .tag_name)/${FILE_NAME}"
           unzip "${FILE_NAME}"
           rm "${FILE_NAME}"
