@@ -12,7 +12,7 @@ services:
       - CS2_PORT=27015               # (CS2 server listen port tcp_udp)
       - CS2_LAN=0                    # (0 - LAN mode disabled, 1 - LAN Mode enabled)
       - CS2_MAXPLAYERS=12            # (Max players)
-      - CS2_PW                       # (CS2 server password)
+      - CS2_PW=test                  # (CS2 server password)
       - CS2_CFG_URL=https://github.com/Bims-sh/cs2-cache-retakes/releases/latest/download/package.tar.gz
       - CS2_ADDITIONAL_ARGS=+exec cache-retakes.cfg
       # Game modes
