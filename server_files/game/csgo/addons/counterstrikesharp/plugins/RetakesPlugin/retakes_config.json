@@ -4,7 +4,7 @@
     "TerroristRatio": 0.45,
     "RoundsToScramble": 4,
     "IsScrambleEnabled": true,
-    "EnableFallbackAllocation": false,
+    "EnableFallbackAllocation": true,
     "EnableBombsiteAnnouncementVoices": false,
     "EnableBombsiteAnnouncementCenter": false,
     "ShouldBreakBreakables": true,
