@@ -13,7 +13,7 @@
     "QueuePriorityFlag": "@css/vip",
     "IsDebugMode": false,
     "ShouldForceEvenTeamsWhenPlayerCountIsMultipleOf10": true,
-    "EnableFallbackBombsiteAnnouncement": true,
+    "EnableFallbackBombsiteAnnouncement": false,
     "ShouldRemoveSpectators": true,
     "IsBalanceEnabled": true,
     "ShouldPreventTeamChangesMidRound": true
