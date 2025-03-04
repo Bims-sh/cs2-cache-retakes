@@ -22,6 +22,14 @@
                     "Chat": "{DEFAULT}[{GREEN}Server{DEFAULT}] Current Players: {BLUE}{PLAYERS}{DEFAULT}/{BLUE}{MAXPLAYERS}{DEFAULT}"
                 }
             ]
+        },
+        {
+            "Interval": 80,
+            "Messages": [
+                {
+                    "Chat": "{DEFAULT}[{GREEN}Guns{DEFAULT}] Use !{BLUE}guns {DEFAULT} to select what guns to use."
+                }
+            ]
         }
     ],
     "Panel": [],
