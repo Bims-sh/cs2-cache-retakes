@@ -30,6 +30,15 @@ jobs:
           unzip "${FILE_NAME}"
           rm "${FILE_NAME}"
 
+      - name: Get latest release from dran1x/CS2-AutoUpdater
+        run: |
+          FILE_NAME=$(curl -s https://api.github.com/repos/dran1x/CS2-AutoUpdater/releases/latest | jq -r ".assets[] | select(.name | test(\"AutoUpdater.*\")) | .name")
+          echo "Downloading ${FILE_NAME}"
+          cd $GITHUB_WORKSPACE/package_files/game/csgo/addons/counterstrikesharp/
+          curl -L -o "${FILE_NAME}" "https://github.com/dran1x/CS2-AutoUpdater/releases/download/$(curl -s https://api.github.com/repos/dran1x/CS2-AutoUpdater/releases/latest | jq -r .tag_name)/${FILE_NAME}"
+          unzip "${FILE_NAME}"
+          rm "${FILE_NAME}"
+
       - name: Get latest release from yonilerner/cs2-retakes-allocator
         run: |
           FILE_NAME=$(curl -s https://api.github.com/repos/yonilerner/cs2-retakes-allocator/releases/latest | jq -r ".assets[] | select(.name | test(\"cs2-retakes-allocator.*\")) | .name")
