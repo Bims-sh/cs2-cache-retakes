@@ -8,8 +8,6 @@
         "FiveSeven",
         "Mac10",
         "MP9",
-        "MP7",
-        "P90",
         "AK47",
         "M4A1S",
         "M4A1",
@@ -22,9 +20,8 @@
         "SSG08"
     ],
     "AllowedWeaponSelectionTypes": [
-        "Random",
-        "Default",
-        "PlayerChoice"
+        "PlayerChoice",
+        "Default"
     ],
     "DefaultWeapons": {
         "Terrorist": {
