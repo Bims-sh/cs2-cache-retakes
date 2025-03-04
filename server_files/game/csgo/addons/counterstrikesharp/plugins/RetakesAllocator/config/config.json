@@ -22,8 +22,9 @@
         "SSG08"
     ],
     "AllowedWeaponSelectionTypes": [
-        "PlayerChoice",
-        "Default"
+        "Random",
+        "Default",
+        "PlayerChoice"
     ],
     "DefaultWeapons": {
         "Terrorist": {
@@ -128,6 +129,6 @@
     "InGameGunMenuChatCommands": "guns,!guns,/guns",
     "ZeusPreference": "Never",
     "DatabaseProvider": "Sqlite",
-    "DatabaseConnectionString": "Data Source=/home/steam/cs2-dedicated/game/csgo/addons/counterstrikesharp/plugins/RetakesAllocator/data.db; Pooling=False",
+    "DatabaseConnectionString": "Data Source=data.db; Pooling=False",
     "AutoUpdateSignatures": true
 }
