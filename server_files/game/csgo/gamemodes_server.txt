@@ -29,7 +29,7 @@
             "displayname" "Retakes"
             "maps"
             {
-                "de_mirage" ""
+                "workshop/3437809122/de_cache" ""
             }
         }
     }
